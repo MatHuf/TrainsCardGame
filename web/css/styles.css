@@ -1,0 +1,94 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  height: 50px;
+}
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  height: calc(100% - 50px);
+}
+
+.title {
+  margin: 0;
+}
+
+.score-container {
+  order: 1;
+  background: yellow;
+  flex-basis: 100%;
+}
+
+.play-container {
+  order: 2;
+  background: red;
+  flex-basis: 100%;
+  display: flex;
+}
+
+.train-container {
+  order: 1;
+  background: blue;
+  flex-basis: 100%;
+  padding-top: 125px;
+}
+
+.deck-container {
+  order: 2;
+  background: forestgreen;
+  flex-basis: 100%;
+}
+
+.deck-button {
+  background-image: url("../img/Back\ Blue\ 2.png");
+  width: 103px;
+  height: 138px;
+}
+
+.card-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px black;
+  width: 103px;
+  height: 138px;
+  padding: 10px;
+  margin-top: -100px;
+}
+
+@media screen and (min-width:600px) {
+  .main {
+    flex-wrap: nowrap;
+  }
+  .score-container {
+    flex-basis: 400px;
+    order: 1;
+  }
+  .play-container {
+    flex-basis: 1;
+    order: 2;
+  }
+  .train-container {
+    flex-basis: 400px;
+    order: 1;
+  }
+  .deck-container {
+    flex-basis: 400px;
+    order: 2;
+  }
+}

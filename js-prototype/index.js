@@ -54,7 +54,7 @@ const getCard = (suit, rank) => {
       name = getNumberName(value);
   }
   return {
-    value,
+    value, 
     suit,
     rank,
     name,
