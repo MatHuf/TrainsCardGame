@@ -121,11 +121,16 @@ const drawCard = () => {
   updateTrain();
 }
 
-const reset = () => {
+const resetGame = () => {
   recordScore();
   clearTrain();
   hideGameOver();
   canPlay = true;
+}
+
+const resetScores = () => {
+  highScores = [];
+  updateScores();
 }
 
 // Game rules
@@ -179,6 +184,8 @@ const showGameOver = () => {
   const nameInput = document.getElementById("new-score-name");
   nameInput.value = "";
   const newScore = document.getElementById("new-score");
+  // This happens before the final (invalid) card is added to the train
+  // so we don't need to worry about subtracting from the new score here
   newScore.innerHTML = train.length;
   const overlay = document.getElementById("overlay");
   overlay.classList.remove(HIDDEN);
@@ -190,20 +197,49 @@ const hideGameOver = () => {
 }
 
 // High scores
+// TODO handle without ordered list to account for ties
 const recordScore = () => {
   const nameInput = document.getElementById("new-score-name");
   highScores.push({
     name: nameInput.value,
-    score: train.length,
+    // This happens after the final (invalid) card is added to the train
+    // and we need to subtract one to account for it
+    score: train.length - 1,
+    rank: undefined,
   });
   updateScores();
 }
 
-const updateScores = () => {
+const rankScores = () => {
+  let rank = 0;
   highScores.sort((a,b) => b.score - a.score);
+  highScores.forEach((s, i) => {
+    if (i - 1 >= 0 && highScores[i - 1].score === s.score){
+      s.rank = rank;
+    } else {
+      s.rank = ++rank;
+    }
+  });
+}
+
+const updateScores = () => {
+  rankScores();
   const scoresList = document.getElementById("scores-list");
   scoresList.innerHTML = "";
+  // Recreating the header so its easier to clear the whole element above
+  const header = createScoreHeader();
+  scoresList.appendChild(header);
   highScores.forEach(s => scoresList.appendChild(createScoreEntry(s)));
+}
+
+const createScoreHeader = () => {
+  const header = createScoreEntry({
+    rank: "Rank",
+    name: "Name",
+    score: "Score",
+  });
+  header.classList.add("score-list-header");
+  return header;
 }
 
 const createScoreEntry = (scoreEntry) => {
@@ -211,11 +247,14 @@ const createScoreEntry = (scoreEntry) => {
   const container = document.createElement("div");
   container.className = "score-container";
   listItem.appendChild(container);
+  const rankContainer = document.createElement("div");
+  rankContainer.textContent = scoreEntry.rank;
+  container.appendChild(rankContainer);
   const nameContainer = document.createElement("div");
   nameContainer.textContent = scoreEntry.name;
+  container.appendChild(nameContainer);
   const scoreContainer = document.createElement("div");
   scoreContainer.textContent = scoreEntry.score;
-  container.appendChild(nameContainer);
   container.appendChild(scoreContainer);
   return listItem;
 }

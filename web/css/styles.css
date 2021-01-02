@@ -106,6 +106,19 @@ body {
   justify-content: space-between;
 }
 
+.scores-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#scores-list {
+  list-style-type: none;
+}
+
+.score-list-header {
+  font-weight: bold;
+}
+
 .hidden {
   display: none;
 }

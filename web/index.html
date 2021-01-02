@@ -14,7 +14,7 @@
       <p>GAME OVER</p>
       <p>Train length: <span id="new-score"></span></p>
       <input id="new-score-name" type="text" name="name" maxlength="32" placeholder="Your name">
-      <button class="game-over-button" onclick="reset()">Try Again</button>
+      <button class="game-over-button" onclick="resetGame()">Try Again</button>
     </div>
   </div>
   <div class="header">
@@ -22,8 +22,19 @@
   </div>
   <div class="main">
     <div class="scores-container">
-      <h2>High Scores</h2>
-      <ol id="scores-list"></ol>
+      <div class="scores-header">
+        <h2>High Scores</h2>
+        <button class="reset-scores-button" onclick="resetScores()">Clear</button>
+      </div>
+      <ul id="scores-list">
+        <li>
+          <div class="score-container score-list-header">
+            <div>Rank</div>
+            <div>Name</div>
+            <div>Score</div>
+          </div>
+        </li>
+      </ul>
     </div>
     <div id="train-container" class="train-container">
     </div>
