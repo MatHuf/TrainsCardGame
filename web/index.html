@@ -12,6 +12,8 @@
   <div id="overlay" class="overlay hidden">
     <div class="game-over-container">
       <p>GAME OVER</p>
+      <p>Train length: <span id="new-score"></span></p>
+      <input id="new-score-name" type="text" name="name" maxlength="32" placeholder="Your name">
       <button class="game-over-button" onclick="reset()">Try Again</button>
     </div>
   </div>
@@ -19,8 +21,9 @@
     <h1 class="title">Trains</h1>
   </div>
   <div class="main">
-    <div class="score-container">
-      Score
+    <div class="scores-container">
+      <h2>High Scores</h2>
+      <ol id="scores-list"></ol>
     </div>
     <div id="train-container" class="train-container">
     </div>

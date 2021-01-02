@@ -29,10 +29,11 @@ body {
   margin: 0;
 }
 
-.score-container {
+.scores-container {
   order: 1;
   background: yellow;
   flex-basis: 100%;
+  padding: 5px;
 }
 
 .play-container {
@@ -87,13 +88,22 @@ body {
   background-color: white;
   border-radius: 5px;
   box-shadow: 1px 1px 3px black;
-  width: 138px;
-  height: 103px;
+  width: 175px;
+  height: 200px;
   padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.game-over-container p {
+  margin: 5px;
+}
+
+.score-container {
+  display: flex;
+  justify-content: space-between;
 }
 
 .hidden {
@@ -104,7 +114,7 @@ body {
   .main {
     flex-wrap: nowrap;
   }
-  .score-container {
+  .scores-container {
     flex-basis: 400px;
     order: 1;
   }

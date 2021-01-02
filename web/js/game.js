@@ -106,12 +106,14 @@ riffleShuffle(deck);
 
 let train = [];
 let canPlay = true;
+let highScores = [];
 
 // Game actions
 const drawCard = () => {
   if (!canPlay) return;
   let newCard = deck.shift();
   if (train.length > 0 && !isValidToPlay(train[train.length - 1], newCard)) {
+    // TODO visually indicate last card on train doesn't match
     canPlay = false;
     showGameOver();
   }
@@ -120,6 +122,7 @@ const drawCard = () => {
 }
 
 const reset = () => {
+  recordScore();
   clearTrain();
   hideGameOver();
   canPlay = true;
@@ -173,6 +176,10 @@ const createCard = (card) => {
 const HIDDEN = "hidden";
 
 const showGameOver = () => {
+  const nameInput = document.getElementById("new-score-name");
+  nameInput.value = "";
+  const newScore = document.getElementById("new-score");
+  newScore.innerHTML = train.length;
   const overlay = document.getElementById("overlay");
   overlay.classList.remove(HIDDEN);
 }
@@ -180,4 +187,35 @@ const showGameOver = () => {
 const hideGameOver = () => {
   const overlay = document.getElementById("overlay");
   overlay.classList.add(HIDDEN);
+}
+
+// High scores
+const recordScore = () => {
+  const nameInput = document.getElementById("new-score-name");
+  highScores.push({
+    name: nameInput.value,
+    score: train.length,
+  });
+  updateScores();
+}
+
+const updateScores = () => {
+  highScores.sort((a,b) => b.score - a.score);
+  const scoresList = document.getElementById("scores-list");
+  scoresList.innerHTML = "";
+  highScores.forEach(s => scoresList.appendChild(createScoreEntry(s)));
+}
+
+const createScoreEntry = (scoreEntry) => {
+  const listItem = document.createElement("li");
+  const container = document.createElement("div");
+  container.className = "score-container";
+  listItem.appendChild(container);
+  const nameContainer = document.createElement("div");
+  nameContainer.textContent = scoreEntry.name;
+  const scoreContainer = document.createElement("div");
+  scoreContainer.textContent = scoreEntry.score;
+  container.appendChild(nameContainer);
+  container.appendChild(scoreContainer);
+  return listItem;
 }
