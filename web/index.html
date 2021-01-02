@@ -9,6 +9,12 @@
 </head>
 
 <body>
+  <div id="overlay" class="overlay hidden">
+    <div class="game-over-container">
+      <p>GAME OVER</p>
+      <button class="game-over-button" onclick="reset()">Try Again</button>
+    </div>
+  </div>
   <div class="header">
     <h1 class="title">Trains</h1>
   </div>
@@ -21,7 +27,6 @@
     <div class="deck-container">
       <button class="deck-button" onclick="drawCard()">Draw</button>
     </div>
-  </div>
   </div>
   <script src="./js/game.js"></script>
 </body>

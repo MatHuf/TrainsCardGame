@@ -105,25 +105,29 @@ stackShuffle(deck);
 riffleShuffle(deck);
 
 let train = [];
+let canPlay = true;
 
 // Game actions
 const drawCard = () => {
+  if (!canPlay) return;
   let newCard = deck.shift();
-  console.log(newCard.getName());
-  // TODO display card
   if (train.length > 0 && !isValidToPlay(train[train.length - 1], newCard)) {
-    // TODO end game
-    train = [];
-    clearTrain();
-    console.log("Game over");
-    return;
+    canPlay = false;
+    showGameOver();
   }
   train.push(newCard);
   updateTrain();
 }
 
+const reset = () => {
+  clearTrain();
+  hideGameOver();
+  canPlay = true;
+}
+
 // Game rules
 const isValidToPlay = (currentCard, newCard) => {
+  // TODO handle aces being both high and low
   if (currentCard.suit === newCard.suit) return true;
   if (currentCard.value <= newCard.value) return true;
   return false;
@@ -137,6 +141,7 @@ const updateTrain = () => {
 }
 
 const clearTrain = () => {
+  train = [];
   let trainCards = document.getElementById("train-container");
   trainCards.innerHTML = "";
 }
@@ -162,4 +167,17 @@ const createCard = (card) => {
   const content = document.createTextNode(`${card.rank} ${suitChar}`);
   cardContainer.appendChild(content);
   return cardContainer;
+}
+
+// Game over state
+const HIDDEN = "hidden";
+
+const showGameOver = () => {
+  const overlay = document.getElementById("overlay");
+  overlay.classList.remove(HIDDEN);
+}
+
+const hideGameOver = () => {
+  const overlay = document.getElementById("overlay");
+  overlay.classList.add(HIDDEN);
 }
