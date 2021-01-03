@@ -26,7 +26,7 @@
         <h2>High Scores</h2>
         <button class="reset-scores-button" onclick="resetScores()">Clear</button>
       </div>
-      <ul id="scores-list">
+      <ul id="scores-list" class="list-style-type-none">
         <li>
           <div class="score-container score-list-header">
             <div>Rank</div>
@@ -39,7 +39,16 @@
     <div id="train-container" class="train-container">
     </div>
     <div class="deck-container">
-      <button class="deck-button" onclick="drawCard()">Draw</button>
+      <button id="deck-button" class="card-size" onclick="drawCard()">Draw</button>
+      <div className="rules-container">
+        <h2>Rules</h2>
+        <ul>
+          <li>Cards of the same suit match</li>
+          <li>Cards of equal or greater rank match</li>
+          <li>Aces are wild</li>
+          <li>Deck is reshuffled after each game</li>
+        </ul>
+      </div>
     </div>
   </div>
   <script src="./js/game.js"></script>
