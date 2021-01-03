@@ -18,11 +18,9 @@ body {
 }
 
 .main {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: auto;
   height: calc(100% - 50px);
 }
 
@@ -31,29 +29,29 @@ body {
 }
 
 .scores-container {
-  order: 1;
-  flex-basis: 100%;
   padding: 5px;
-}
-
-.play-container {
-  order: 2;
-  flex-basis: 100%;
-  display: flex;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
 }
 
 .train-container {
-  order: 1;
-  flex-basis: 100%;
   padding: 140px 0px 0px 25px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
 }
 
 .deck-container {
-  order: 2;
-  flex-basis: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
 }
 
 .card-container {
@@ -124,9 +122,11 @@ body {
   padding: 5px 0;
   border-radius: 6px;
   box-shadow: 1px 1px 3px gray;
+  background-color: white;
   width: 75px;
-  top: -5px;
-  left: 105%;
+  bottom: 100%;
+  left: 50%; 
+  margin-left: -60px;
   position: absolute;
   z-index: 1;
 }
@@ -158,22 +158,31 @@ body {
 
 @media screen and (min-width:600px) {
   .main {
-    flex-wrap: nowrap;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: auto;
   }
   .scores-container {
-    flex-basis: 400px;
-    order: 1;
-  }
-  .play-container {
-    flex-basis: 1;
-    order: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
   }
   .train-container {
-    flex-basis: 400px;
-    order: 1;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
   }
   .deck-container {
-    flex-basis: 400px;
-    order: 2;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+  .score-container .tooltip-text {
+    top: -5px;
+    left: 105%;
+    margin-left: 0;
+    bottom: auto;
   }
 }
