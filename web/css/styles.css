@@ -72,6 +72,15 @@ body {
   margin-top: -100px;
 }
 
+.invalid-card {
+  margin-left: 50px;
+}
+
+.invalid-card div {
+  font-size: 4em;
+  text-align: center;
+}
+
 .overlay {
   position: absolute;
   top: 0;

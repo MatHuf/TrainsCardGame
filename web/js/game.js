@@ -112,13 +112,16 @@ let highScores = [];
 const drawCard = () => {
   if (!canPlay) return;
   let newCard = deck.shift();
-  if (train.length > 0 && !isValidToPlay(train[train.length - 1], newCard)) {
-    // TODO visually indicate last card on train doesn't match
+  // First card is always valid
+  let isValid = train.length > 0 
+    ? isValidToPlay(train[train.length - 1], newCard)
+    : true;
+  if (!isValid) {
     canPlay = false;
     showGameOver();
   }
   train.push(newCard);
-  updateTrain();
+  updateTrain(isValid);
 }
 
 const resetGame = () => {
@@ -142,10 +145,14 @@ const isValidToPlay = (currentCard, newCard) => {
 }
 
 // Display train
-const updateTrain = () => {
+const updateTrain = (isValid) => {
   if (train.length < 1) return;
   let parent = document.getElementById("train-container");
-  parent.appendChild(createCard(train[train.length - 1]));
+  let newCard = createCard(train[train.length - 1], isValid);
+  if (!isValid) {
+    newCard.classList.add("invalid-card")
+  }
+  parent.appendChild(newCard);
 }
 
 const clearTrain = () => {
@@ -154,7 +161,7 @@ const clearTrain = () => {
   trainCards.innerHTML = "";
 }
 
-const createCard = (card) => {
+const createCard = (card, isValid) => {
   const cardContainer = document.createElement("div");
   cardContainer.className = "card-container";
   let suitChar;
@@ -174,6 +181,11 @@ const createCard = (card) => {
   }
   const content = document.createTextNode(`${card.rank} ${suitChar}`);
   cardContainer.appendChild(content);
+  if (!isValid) {
+    const invalidIndicator = document.createElement("div");
+    invalidIndicator.innerHTML = "&#128683;"; // Prohibited emoji
+    cardContainer.appendChild(invalidIndicator);
+  }
   return cardContainer;
 }
 
@@ -197,7 +209,6 @@ const hideGameOver = () => {
 }
 
 // High scores
-// TODO handle without ordered list to account for ties
 const recordScore = () => {
   const nameInput = document.getElementById("new-score-name");
   highScores.push({
