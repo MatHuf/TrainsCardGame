@@ -42,11 +42,23 @@
       <button id="deck-button" class="card-size" onclick="drawCard()">Draw</button>
       <div className="rules-container">
         <h2>Rules</h2>
-        <ul>
-          <li>Cards of the same suit match</li>
-          <li>Cards of equal or greater rank match</li>
-          <li>Aces are wild</li>
-          <li>Deck is reshuffled after each game</li>
+        <ul class="list-style-type-none">
+          <li>
+            <input type="checkbox" id="greater-rank-rule" name="greater-rank-rule" value="greater-rank-rule" checked disabled>
+            <label for="greater-rank-rule"> Cards of equal or greater rank match</label>
+          </li>
+          <li>
+            <input type="checkbox" id="reshuffle-rule" name="reshuffle-rule" value="reshuffle-rule" checked disabled>
+            <label for="reshuffle-rule"> Deck is reshuffled after each game</label>
+          </li>
+          <li>
+            <input type="checkbox" id="suite-match-rule" name="suite-match-rule" value="suite-match-rule" checked>
+            <label for="suite-match-rule"> Cards of the same suit match</label>
+          </li>
+          <li>
+            <input type="checkbox" id="aces-wild-rule" name="aces-wild-rule" value="aces-wild-rule" checked>
+            <label for="aces-wild-rule"> Aces are wild</label>
+          </li>
         </ul>
       </div>
     </div>

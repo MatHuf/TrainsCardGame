@@ -115,6 +115,7 @@ const alternateShuffleDeck = (deck, shuffleCount) => {
 	}
 };
 
+// Initialization
 let deck = [];
 let train = [];
 let canPlay = true;
