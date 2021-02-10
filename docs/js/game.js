@@ -120,7 +120,7 @@ let train = [];
 let canPlay = true;
 let highScores = [];
 
-const prepareDeck = shuffles => {
+const prepareDeck = () => {
 	deck = getDeck();
 	alternateShuffleDeck(deck, 3);
 };
