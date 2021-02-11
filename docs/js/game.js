@@ -1,4 +1,4 @@
-// Deck generation
+/* Deck generation */
 const suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
 const ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 
@@ -115,11 +115,15 @@ const alternateShuffleDeck = (deck, shuffleCount) => {
 	}
 };
 
-// Initialization
+/* Initialization */
 let deck = [];
 let train = [];
 let canPlay = true;
 let highScores = [];
+
+// Optional rule checkboxes
+const suiteMatchRuleCheckbox = document.getElementById("suite-match-rule");
+const acesWildRuleCheckbox = document.getElementById("aces-wild-rule");
 
 const prepareDeck = () => {
 	deck = getDeck();
@@ -131,14 +135,14 @@ prepareDeck();
 const nameInput = document.getElementById("new-score-name");
 nameInput.addEventListener("keydown", e => handleEnter(e));
 
-// Event handlers
+/* Event handlers */
 const handleEnter = e => {
 	if (e.key === "Enter") {
 		resetGame();
 	}
 };
 
-// Game actions
+/* Game actions */
 const drawCard = () => {
 	if (!canPlay) return;
 	let newCard = deck.shift();
@@ -165,16 +169,15 @@ const resetScores = () => {
 	updateScores();
 };
 
-// Game rules
+/* Game rules */
 const isValidToPlay = (currentCard, newCard) => {
-	// Potential upgrade: customize rules?
-	if (currentCard.suit === newCard.suit) return true;
 	if (currentCard.value <= newCard.value) return true;
-	if (newCard.rank.toLowerCase() === "a") return true;
+	if (suiteMatchRuleCheckbox.checked && currentCard.suit === newCard.suit) return true;
+	if (acesWildRuleCheckbox.checked && newCard.rank.toLowerCase() === "a") return true;
 	return false;
 };
 
-// Display train
+/* Display train */
 const updateTrain = isValid => {
 	if (train.length < 1) return;
 	let parent = document.getElementById("train-container");
@@ -205,7 +208,7 @@ const createCard = (card, isValid) => {
 	return cardContainer;
 };
 
-// Game over state
+/* Game over state */
 const HIDDEN = "hidden";
 
 const showGameOver = () => {
@@ -225,7 +228,7 @@ const hideGameOver = () => {
 	overlay.classList.add(HIDDEN);
 };
 
-// High scores
+/* High scores */
 const recordScore = () => {
 	const nameInput = document.getElementById("new-score-name");
 	highScores.push({
