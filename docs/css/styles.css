@@ -25,6 +25,13 @@ body {
 	height: calc(100% - 50px);
 }
 
+.footer {
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 3;
+	grid-row-end: 4;
+}
+
 .title {
 	margin: 0;
 }
@@ -37,22 +44,36 @@ body {
 	grid-row-end: 4;
 }
 
-.train-container {
-	padding: 140px 0px 0px 25px;
-	grid-column-start: 1;
-	grid-column-end: 2;
-	grid-row-start: 1;
-	grid-row-end: 3;
-}
-
-.deck-container {
+.play-container {
+	height: 100%;
+	max-height: calc(100vh - 50px);;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	grid-column-start: 2;
 	grid-column-end: 3;
 	grid-row-start: 1;
-	grid-row-end: 3;
+	grid-row-end: 4;
+}
+
+.scroll-container {
+	overflow-y: auto;
+}
+
+.train-container {
+	padding: 140px 0px 10px 0px;
+	overflow: visible;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.deck-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding-bottom: 10px;
 }
 
 .card-container {

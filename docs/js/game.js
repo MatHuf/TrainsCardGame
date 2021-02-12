@@ -181,11 +181,15 @@ const isValidToPlay = (currentCard, newCard) => {
 const updateTrain = isValid => {
 	if (train.length < 1) return;
 	let parent = document.getElementById("train-container");
-	let newCard = createCard(train[train.length - 1], isValid);
+	let newCard = train[train.length - 1];
+	let newCardElement = createCard(newCard, isValid);
 	if (!isValid) {
-		newCard.classList.add("invalid-card");
+		newCardElement.classList.add("invalid-card");
 	}
-	parent.appendChild(newCard);
+	let newCardId = `${newCard.rank}${newCard.suit}`;
+	newCardElement.setAttribute("id", newCardId);
+	parent.appendChild(newCardElement);
+	document.getElementById(newCardId).scrollIntoView();
 };
 
 const clearTrain = () => {
