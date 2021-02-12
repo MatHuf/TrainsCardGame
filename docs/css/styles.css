@@ -100,12 +100,15 @@ body {
 	box-shadow: 1px 1px 3px black;
 	padding: 10px;
 	margin-top: -125px;
-	font-size: 2em;
 }
 
 .card-size {
 	width: 164px;
 	height: 189px;
+}
+
+.big-font {
+	font-size: 2em;
 }
 
 .invalid-card {

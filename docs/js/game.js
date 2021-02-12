@@ -200,7 +200,7 @@ const clearTrain = () => {
 
 const createCard = (card, isValid) => {
 	const cardContainer = document.createElement("div");
-	cardContainer.classList.add("card-container", "card-size");
+	cardContainer.classList.add("card-container", "card-size", "big-font");
 	const suitChar = getSuitEmoji(card);
 	const content = document.createTextNode(`${card.rank} ${suitChar}`);
 	cardContainer.appendChild(content);
