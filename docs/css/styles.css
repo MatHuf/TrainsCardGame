@@ -20,7 +20,7 @@ body {
 
 .main {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
 	grid-auto-rows: auto;
 	height: calc(100% - 50px);
 }
@@ -39,9 +39,9 @@ body {
 .scores-container {
 	padding: 5px;
 	grid-column-start: 1;
-	grid-column-end: 3;
-	grid-row-start: 3;
-	grid-row-end: 4;
+	grid-column-end: 2;
+	grid-row-start: 1;
+	grid-row-end: 3;
 }
 
 .play-container {
@@ -53,6 +53,24 @@ body {
 	grid-column-start: 2;
 	grid-column-end: 3;
 	grid-row-start: 1;
+	grid-row-end: 4;
+}
+
+.rules-container {
+	grid-column-start: 3;
+	grid-column-end: 4;
+	grid-row-start: 1;
+	grid-row-end: 2;
+}
+
+.about-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	padding: 5px;
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 3;
 	grid-row-end: 4;
 }
 
@@ -179,28 +197,6 @@ body {
 }
 
 @media screen and (min-width: 600px) {
-	.main {
-		grid-template-columns: 1fr 1fr 1fr;
-		grid-auto-rows: auto;
-	}
-	.scores-container {
-		grid-column-start: 1;
-		grid-column-end: 2;
-		grid-row-start: 1;
-		grid-row-end: 3;
-	}
-	.train-container {
-		grid-column-start: 2;
-		grid-column-end: 3;
-		grid-row-start: 1;
-		grid-row-end: 3;
-	}
-	.deck-container {
-		grid-column-start: 3;
-		grid-column-end: 4;
-		grid-row-start: 1;
-		grid-row-end: 3;
-	}
 	.score-container .tooltip-text {
 		top: -5px;
 		left: 105%;
