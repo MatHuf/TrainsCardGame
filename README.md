@@ -2,6 +2,8 @@
 
 Trains is a simple card game to play alone or with friends.
 
+[Play here](https://mathuf.github.io/TrainsCardGame/)
+
 Rules
 
 - Shuffle a deck of cards.
