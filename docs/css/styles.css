@@ -198,9 +198,8 @@ body {
 	display: none;
 }
 
-input, textarea {
-  -webkit-appearance: none;
-  border-radius: 0;
+input[type=submit], textarea  {
+	-webkit-border-radius:0px;
 }
 
 @media screen and (min-width: 600px) {
