@@ -198,6 +198,11 @@ body {
 	display: none;
 }
 
+input, textarea {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
 @media screen and (min-width: 600px) {
 	.main {
 		grid-template-columns: 1fr 1fr 1fr;
