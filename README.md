@@ -4,7 +4,7 @@ Trains is a simple card game to play alone or with friends.
 
 [Play here](https://mathuf.github.io/TrainsCardGame/)
 
-Rules
+## Rules
 
 - Shuffle a deck of cards.
 - Draw the first card and place face up.
@@ -12,3 +12,7 @@ Rules
 - If you can play the card, place it face up atop the first card.
 - Repeat the above two steps until you draw a card that can't be played.
 - The game is now over.
+
+## About
+
+Trains game designed by Bridget McNally.
