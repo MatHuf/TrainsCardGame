@@ -189,7 +189,11 @@ const updateTrain = isValid => {
 	let newCardId = `${newCard.rank}${newCard.suit}`;
 	newCardElement.setAttribute("id", newCardId);
 	parent.appendChild(newCardElement);
-	document.getElementById(newCardId).scrollIntoView();
+	// This matches media queries in style.css
+	let viewWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+	if (viewWidth >= 600) {
+		document.getElementById(newCardId).scrollIntoView();
+	}
 };
 
 const clearTrain = () => {
