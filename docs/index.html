@@ -47,6 +47,7 @@
     </div>
     <div class="rules-container">
       <h2>Rules</h2>
+      <p>Difficulty: <span id="difficulty-value">Normal</span></p>
       <ul class="list-style-type-none">
         <li>
           <input type="checkbox" id="greater-rank-rule" name="greater-rank-rule" value="greater-rank-rule" checked
@@ -58,11 +59,11 @@
           <label for="reshuffle-rule"> Deck is reshuffled after each game</label>
         </li>
         <li>
-          <input type="checkbox" id="suite-match-rule" name="suite-match-rule" value="suite-match-rule" checked>
+          <input type="checkbox" id="suite-match-rule" name="suite-match-rule" value="suite-match-rule" onclick="toggleSuiteMatchRule()" checked>
           <label for="suite-match-rule"> Cards of the same suit match</label>
         </li>
         <li>
-          <input type="checkbox" id="aces-wild-rule" name="aces-wild-rule" value="aces-wild-rule" checked>
+          <input type="checkbox" id="aces-wild-rule" name="aces-wild-rule" value="aces-wild-rule" onclick="toggleAcesWildRule()" checked>
           <label for="aces-wild-rule"> Aces are wild</label>
         </li>
       </ul>

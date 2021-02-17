@@ -120,10 +120,8 @@ let deck = [];
 let train = [];
 let canPlay = true;
 let highScores = [];
-
-// Optional rule checkboxes
-const suiteMatchRuleCheckbox = document.getElementById("suite-match-rule");
-const acesWildRuleCheckbox = document.getElementById("aces-wild-rule");
+let suiteMatchRule = true;
+let acesWildRule = true;
 
 const prepareDeck = () => {
 	deck = getDeck();
@@ -172,9 +170,30 @@ const resetScores = () => {
 /* Game rules */
 const isValidToPlay = (currentCard, newCard) => {
 	if (currentCard.value <= newCard.value) return true;
-	if (suiteMatchRuleCheckbox.checked && currentCard.suit === newCard.suit) return true;
-	if (acesWildRuleCheckbox.checked && newCard.rank.toLowerCase() === "a") return true;
+	if (suiteMatchRule && currentCard.suit === newCard.suit) return true;
+	if (suiteMatchRule && newCard.rank.toLowerCase() === "a") return true;
 	return false;
+};
+
+const toggleSuiteMatchRule = () => {
+	suiteMatchRule = !suiteMatchRule;
+	updateDifficulty();
+};
+
+const toggleAcesWildRule = () => {
+	acesWildRule = !acesWildRule;
+	updateDifficulty();
+};
+
+const updateDifficulty = () => {
+	let difficultySpan = document.getElementById("difficulty-value");
+	if (suiteMatchRule && acesWildRule) {
+		difficultySpan.textContent = "Normal";
+	} else if (suiteMatchRule || acesWildRule) {
+		difficultySpan.textContent = "Hard";
+	} else {
+		difficultySpan.textContent = "McNarly";
+	}
 };
 
 /* Display train */
